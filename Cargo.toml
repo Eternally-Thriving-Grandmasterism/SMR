@@ -1,0 +1,20 @@
+[package]
+name = "open-smr"
+version = "0.1.0"
+edition = "2021"
+description = "Open Passive-Safety SMR design lattice — TOLC 8 valence scoring + OpenSmrShard skeleton (design-time only). Companion to Ra-Thor."
+license = "LicenseRef-AG-SML-1.0"
+license-file = "LICENSE"
+authors = ["Eternally-Thriving-Grandmasterism", "Sherif Samy Botros <info@Rathor.ai>"]
+repository = "https://github.com/Eternally-Thriving-Grandmasterism/SMR"
+homepage = "https://github.com/Eternally-Thriving-Grandmasterism/SMR"
+readme = "README.md"
+keywords = ["smr", "energy", "tolc", "mercy", "open-design", "abundance"]
+categories = ["science", "simulation"]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[lib]
+path = "src/lib.rs"
