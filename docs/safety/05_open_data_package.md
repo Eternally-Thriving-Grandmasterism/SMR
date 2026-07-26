@@ -2,24 +2,49 @@
 
 **Checklist flag:** `open_data_package_outlined`  
 **Gate emphasis:** Truth · Service · Abundance  
-**Contact:** info@Rathor.ai
+**Contact:** info@Rathor.ai  
+**Status:** Machine-readable export path **implemented** (`open_smr_data_package_v1`).
 
-> DESIGN-TIME ONLY. Data package outline — not a release of proprietary or controlled nuclear data.
+> DESIGN-TIME ONLY. Data package outline + JSON export — not a release of proprietary or controlled nuclear data.
 
 ## Intent
 
 Define what must be publishable so others can reproduce valence scores, challenge assumptions, and extend the lattice without closed black boxes.
 
-## Package contents (outline)
+## Schema
 
-| Artifact | Format | Notes |
-|----------|--------|-------|
-| Proposal JSON | `EnergyDesignProposal` serde | Gate scores + notes |
-| Valence report | `LiveValenceReport` | min/mean/floors |
-| Shard snapshot | `OpenSmrShard` | checklist + protocol |
-| Safety notes | `docs/safety/*.md` | this tree |
-| Assumption log | markdown/table | dated revisions |
-| External references | bibliography | no controlled data |
+- **Name:** `open_smr_data_package_v1`
+- **API:** `OpenDataPackage`, `export_reference_open_data_pretty()`, `export_proposal_open_data_pretty()`
+
+### Envelope fields
+
+| Field | Contents |
+|-------|----------|
+| `schema` | `open_smr_data_package_v1` |
+| `package_version` | crate version |
+| `contact` | `info@Rathor.ai` |
+| `license_tag` | `AG-SML v1.0` |
+| `disclaimer` | design-time only |
+| `proposal` | full `EnergyDesignProposal` |
+| `score` | `EnergyDesignScore` + recommendation |
+| `valence` | `LiveValenceReport` (8 gates + floors) |
+| `shard_id` | present if strict SMR shard was born |
+| `safety_case` | six checklist booleans |
+| `safety_progress_*` | completed / total |
+
+## Usage
+
+```rust
+use open_smr::{export_reference_open_data_pretty, OpenDataPackage};
+
+let json = export_reference_open_data_pretty()?;
+let pkg = OpenDataPackage::from_json(&json)?;
+assert_eq!(pkg.schema, "open_smr_data_package_v1");
+```
+
+```bash
+cargo test open_data
+```
 
 ## Rules
 
@@ -34,4 +59,4 @@ Define what must be publishable so others can reproduce valence scores, challeng
 
 ---
 
-*Mark `SafetyCaseItem::OpenDataPackage` when a machine-readable export path exists for proposal + valence + checklist.*
+*Mark `SafetyCaseItem::OpenDataPackage` when exporting via this path (reference helper marks it on the snapshot).*
