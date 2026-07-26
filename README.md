@@ -14,7 +14,7 @@ Companion: [Ra-Thor](https://github.com/Eternally-Thriving-Grandmasterism/Ra-Tho
 | **`EnergyDesignProposal`** | Explicit [0,1] metrics mapped 1:1 onto the eight gates |
 | **`score_energy_design`** | ADVANCE / REVIEW / HOLD recommendation |
 | **`OpenSmrShard`** | Sovereign design shard — **constructible only if class = SMR and strict floor passes** |
-| **Safety-case checklist** | Six explicit work items (start incomplete) |
+| **Safety-case checklist** | Six explicit work items + design notes under [`docs/`](docs/SAFETY_CASE.md) |
 | **Open protocol surface** | AG-SML tag, inspectable control/safety intent |
 
 ## Quick start
@@ -53,6 +53,19 @@ println!("{}", shard.status_line());
 | Cosmic Harmony | 0.85 |
 
 **min ≈ 0.83 → STRICT PASS → ADVANCE → OpenSmrShard may be born.**
+
+## Safety case (design-time)
+
+Index: **[docs/SAFETY_CASE.md](docs/SAFETY_CASE.md)**
+
+1. [Passive shutdown path](docs/safety/01_passive_shutdown.md)
+2. [Failure mode inventory](docs/safety/02_failure_modes.md)
+3. [Externalities bounded](docs/safety/03_externalities.md)
+4. [Independent review plan](docs/safety/04_independent_review.md)
+5. [Open data package](docs/safety/05_open_data_package.md)
+6. [Local operability](docs/safety/06_local_operability.md)
+
+Code checklist flags start **incomplete**; mark `SafetyCaseItem::*` only after the matching note is reviewed.
 
 ## License
 
