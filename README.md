@@ -14,6 +14,7 @@ Companion: [Ra-Thor](https://github.com/Eternally-Thriving-Grandmasterism/Ra-Tho
 | **`EnergyDesignProposal`** | Explicit [0,1] metrics mapped 1:1 onto the eight gates |
 | **`score_energy_design`** | ADVANCE / REVIEW / HOLD recommendation |
 | **`OpenSmrShard`** | Sovereign design shard — **constructible only if class = SMR and strict floor passes** |
+| **Open data package** | Schema `open_smr_data_package_v1` — proposal + valence + checklist JSON |
 | **Safety-case checklist** | Six explicit work items + design notes under [`docs/`](docs/SAFETY_CASE.md) |
 | **Open protocol surface** | AG-SML tag, inspectable control/safety intent |
 
@@ -27,14 +28,19 @@ cargo test
 use open_smr::{
     score_energy_design, example_open_smr_high,
     OpenSmrShard, birth_reference_open_smr_shard,
+    export_reference_open_data_pretty, OpenDataPackage, OPEN_DATA_SCHEMA,
 };
 
 let score = score_energy_design(&example_open_smr_high())?;
 assert!(score.valence.passes_strict_floor);
 
 let shard = OpenSmrShard::try_from_score(&score)?;
-// or: let shard = birth_reference_open_smr_shard()?;
 println!("{}", shard.status_line());
+
+// Safety-case item 5 — machine-readable open data
+let json = export_reference_open_data_pretty()?;
+let pkg = OpenDataPackage::from_json(&json)?;
+assert_eq!(pkg.schema, OPEN_DATA_SCHEMA);
 ```
 
 ## Reference proposal (strict pass)
@@ -54,6 +60,20 @@ println!("{}", shard.status_line());
 
 **min ≈ 0.83 → STRICT PASS → ADVANCE → OpenSmrShard may be born.**
 
+## Open data package (`open_smr_data_package_v1`)
+
+| Field | Contents |
+|-------|----------|
+| `proposal` | Full `EnergyDesignProposal` |
+| `score` / `valence` | TOLC 8 report + recommendation |
+| `shard_id` | Set when strict SMR shard was born |
+| `safety_case` | Six checklist flags |
+| `contact` / `license_tag` | `info@Rathor.ai` · AG-SML v1.0 |
+
+API: `OpenDataPackage::from_proposal`, `from_shard`, `to_json_pretty`, `from_json`, `export_reference_open_data_pretty()`.
+
+See [docs/safety/05_open_data_package.md](docs/safety/05_open_data_package.md) and [fixtures/](fixtures/).
+
 ## Safety case (design-time)
 
 Index: **[docs/SAFETY_CASE.md](docs/SAFETY_CASE.md)**
@@ -62,10 +82,10 @@ Index: **[docs/SAFETY_CASE.md](docs/SAFETY_CASE.md)**
 2. [Failure mode inventory](docs/safety/02_failure_modes.md)
 3. [Externalities bounded](docs/safety/03_externalities.md)
 4. [Independent review plan](docs/safety/04_independent_review.md)
-5. [Open data package](docs/safety/05_open_data_package.md)
+5. [Open data package](docs/safety/05_open_data_package.md) — **export path live**
 6. [Local operability](docs/safety/06_local_operability.md)
 
-Code checklist flags start **incomplete**; mark `SafetyCaseItem::*` only after the matching note is reviewed.
+Mark `SafetyCaseItem::*` only after the matching note is reviewed (item 5 marks on reference export snapshot).
 
 ## License
 
