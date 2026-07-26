@@ -1,0 +1,72 @@
+{
+  "schema": "open_smr_data_package_v1",
+  "package_version": "0.1.0",
+  "contact": "info@Rathor.ai",
+  "license_tag": "AG-SML v1.0",
+  "disclaimer": "DESIGN-TIME ONLY. Not a licensed reactor, not physical readiness, not regulatory approval. Open data under AG-SML. Contact: info@Rathor.ai",
+  "proposal": {
+    "id": "energy-open-smr-001",
+    "title": "Open Passive-Safety SMR Lattice (abundance-first)",
+    "class": "Smr",
+    "evidence_grounding": 0.88,
+    "control_stability": 0.86,
+    "community_benefit": 0.84,
+    "zero_harm_safety": 0.91,
+    "open_serviceability": 0.89,
+    "abundance_density": 0.87,
+    "livability_impact": 0.83,
+    "long_horizon_harmony": 0.85,
+    "notes": "Design-time open protocol + passive safety emphasis; not a licensed reactor claim."
+  },
+  "score": {
+    "proposal_id": "energy-open-smr-001",
+    "title": "Open Passive-Safety SMR Lattice (abundance-first)",
+    "class": "SMR",
+    "valence": {
+      "vector": {
+        "truth": 0.88,
+        "order": 0.86,
+        "love": 0.84,
+        "compassion": 0.91,
+        "service": 0.89,
+        "abundance": 0.87,
+        "joy": 0.83,
+        "cosmic_harmony": 0.85
+      },
+      "aggregate_mean": 0.86625,
+      "min_gate": 0.83,
+      "passes_soft_floor": true,
+      "passes_strict_floor": true,
+      "council_note": "Energy design STRICT PASS | min=0.830 mean=0.866 | all TOLC 8 ≥ 0.72"
+    },
+    "recommendation": "ADVANCE: 'Open Passive-Safety SMR Lattice (abundance-first)' (SMR) clears strict TOLC 8. Open shard + formal safety case next."
+  },
+  "valence": {
+    "vector": {
+      "truth": 0.88,
+      "order": 0.86,
+      "love": 0.84,
+      "compassion": 0.91,
+      "service": 0.89,
+      "abundance": 0.87,
+      "joy": 0.83,
+      "cosmic_harmony": 0.85
+    },
+    "aggregate_mean": 0.86625,
+    "min_gate": 0.83,
+    "passes_soft_floor": true,
+    "passes_strict_floor": true,
+    "council_note": "Energy design STRICT PASS | min=0.830 mean=0.866 | all TOLC 8 ≥ 0.72"
+  },
+  "shard_id": "shard-smr-energy-open-smr-001",
+  "safety_case": {
+    "passive_shutdown_path_documented": false,
+    "failure_mode_inventory_drafted": false,
+    "externalities_bounded": false,
+    "independent_review_planned": false,
+    "open_data_package_outlined": true,
+    "local_operability_notes": false
+  },
+  "safety_progress_completed": 1,
+  "safety_progress_total": 6
+}
