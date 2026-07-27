@@ -62,11 +62,11 @@
   "safety_case": {
     "passive_shutdown_path_documented": true,
     "failure_mode_inventory_drafted": true,
-    "externalities_bounded": false,
+    "externalities_bounded": true,
     "independent_review_planned": false,
     "open_data_package_outlined": true,
-    "local_operability_notes": false
+    "local_operability_notes": true
   },
-  "safety_progress_completed": 3,
+  "safety_progress_completed": 5,
   "safety_progress_total": 6
 }
