@@ -60,13 +60,13 @@
   },
   "shard_id": "shard-smr-energy-open-smr-001",
   "safety_case": {
-    "passive_shutdown_path_documented": false,
+    "passive_shutdown_path_documented": true,
     "failure_mode_inventory_drafted": true,
     "externalities_bounded": false,
     "independent_review_planned": false,
     "open_data_package_outlined": true,
     "local_operability_notes": false
   },
-  "safety_progress_completed": 2,
+  "safety_progress_completed": 3,
   "safety_progress_total": 6
 }
